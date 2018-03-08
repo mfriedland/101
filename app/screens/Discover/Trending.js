@@ -1,8 +1,6 @@
 
 import React, { Component } from 'react';
 import { FlatList, View, StyleSheet, Button, Dimensions, Image, Text } from 'react-native';
-import { YellowBox } from 'react-native';
-
 import store from '../../store.js'
 import { fetchUsers } from '../../reducers/AllUsers'
 
@@ -21,11 +19,11 @@ class Trending extends Component {
     this.getImageData = this.getImageData.bind(this)
   }
 
-  componentWillMount() {
-    store.dispatch(fetchUsers())
+  componentDidMount() {
+    // store.dispatch(fetchUsers())
     let dataToRender = store.getState()
     console.log(dataToRender.AllUsers)
-    this.getImageData()
+    // this.getImageData()
   }
 
  getImageData = () => {
@@ -86,50 +84,9 @@ class Trending extends Component {
       {image: '../../../assets/images/college18jpg'},
       {image: '../../../assets/images/college19.jpg'},
       {image: '../../../assets/images/college20.jpg'},
-      {image: '../../../assets/images/college1.jpg'},
-      {image: '../../../assets/images/college2.jpg'},
-      {image: '../../../assets/images/college3.jpg'},
-      {image: '../../../assets/images/college4.jpg'},
-      {image: '../../../assets/images/college5.jpg'},
-      {image: '../../../assets/images/college6.jpg'},
-      {image: '../../../assets/images/college7.jpg'},
-      {image: '../../../assets/images/college8.jpg'},
-      {image: '../../../assets/images/college9.jpg'},
-      {image: '../../../assets/images/college10.jpg'},
-      {image: '../../../assets/images/college11.jpg'},
-      {image: '../../../assets/images/college12.jpg'},
-      {image: '../../../assets/images/college13.jpg'},
-      {image: '../../../assets/images/college14.jpg'},
-      {image: '../../../assets/images/college15.jpg'},
-      {image: '../../../assets/images/college16.jpg'},
-      {image: '../../../assets/images/college17.jpg'},
-      {image: '../../../assets/images/college18jpg'},
-      {image: '../../../assets/images/college19.jpg'},
-      {image: '../../../assets/images/college20.jpg'},
-      {image: '../../../assets/images/college1.jpg'},
-      {image: '../../../assets/images/college2.jpg'},
-      {image: '../../../assets/images/college3.jpg'},
-      {image: '../../../assets/images/college4.jpg'},
-      {image: '../../../assets/images/college5.jpg'},
-      {image: '../../../assets/images/college6.jpg'},
-      {image: '../../../assets/images/college7.jpg'},
-      {image: '../../../assets/images/college8.jpg'},
-      {image: '../../../assets/images/college9.jpg'},
-      {image: '../../../assets/images/college10.jpg'},
-      {image: '../../../assets/images/college11.jpg'},
-      {image: '../../../assets/images/college12.jpg'},
-      {image: '../../../assets/images/college13.jpg'},
-      {image: '../../../assets/images/college14.jpg'},
-      {image: '../../../assets/images/college15.jpg'},
-      {image: '../../../assets/images/college16.jpg'},
-      {image: '../../../assets/images/college17.jpg'},
-      {image: '../../../assets/images/college18jpg'},
-      {image: '../../../assets/images/college19.jpg'},
-      {image: '../../../assets/images/college20.jpg'},
-
     ]
-    console.disableYellowBox = true;
-   const { columns, key, array } = this.state
+
+    const { columns, key, array } = this.state
    const itemWidth=((ITEM_WIDTH - (10*columns)) / columns)
    console.log('hey',columns, key, array, this.state.array)
    return (
@@ -150,6 +107,7 @@ class Trending extends Component {
           renderItem={({item, index}) =>  {
           let picture = item.image
           console.log(item.image, `'${item.image}'`)
+
           return <Image style={{width: 120, height: 90, marginRight: 10}} source={{ uri: item.image }} />
           }}
             // image={{uri: item.picture.large}} />
@@ -190,7 +148,6 @@ const styles = StyleSheet.create({
 // import React, { Component } from "react";
 // import { View, Text, FlatList, ActivityIndicator } from "react-native";
 // import { List, ListItem, SearchBar } from "react-native-elements";
-import axios from 'axios'
 // // import Icon from 'react-native-vector-icons/FontAwesome';
 // // const myIcon = (<Icon name="rocket" size={30} color="#900" />)
 

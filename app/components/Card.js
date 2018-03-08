@@ -1,16 +1,21 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Dimensions, Image } from 'react-native';
+
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const Card = (props) => {
   return (
-    <View style={styles.containerStyle}>
+    <View style={styles.cardStyle}>
       {props.children}
-    </View>
+      <Image style={{width:SCREEN_WIDTH, height: SCREEN_HEIGHT}} source={props.image} />
+         </View>
   );
 };
 
 const styles = {
-  containerStyle: {
+  cardStyle: {
     borderWidth: 1,
     borderRadius: 2,
     borderColor: '#ddd',
@@ -22,7 +27,12 @@ const styles = {
     elevation: 1,
     marginLeft: 5,
     marginRight: 5,
-    marginTop: 10
+    marginTop: 10,
+    width: .8*SCREEN_WIDTH,
+    height: .8*SCREEN_HEIGHT,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
   }
 };
 

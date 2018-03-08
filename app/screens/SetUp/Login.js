@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
 
-import LoginForm from '../components/LoginForm';
-import store from '../store.js'
-import { fetchUsers } from '../reducers/AllUsers'
+import LoginForm from '../../components/LoginForm';
+import store from '../../store.js'
+import { fetchUsers } from '../../reducers/AllUsers'
 
 
 class Login extends Component {
@@ -17,9 +17,8 @@ class Login extends Component {
 
   state = store.getState();
 
-  componentWillMount() {
-    console.log(this.props, fetchUsers())
-    // console.log('try', fetchUsers);
+  componentDidMount() {
+
     store.dispatch(fetchUsers());
     // this.props.fetchUsers;
     // store.getState();
@@ -27,8 +26,8 @@ class Login extends Component {
 
   renderContent() {
     switch (this.state.loggedIn) {
-      case true:
-      return Actions.main()
+      // case true:
+      // return Actions.main()
       case false:
         return <Login Form />
       default:
@@ -36,17 +35,20 @@ class Login extends Component {
     }
   }
 
+  onNextPage = () => {
+    this.props.navigation.navigate('profile');
+  }
 
   render() {
     const { container, signupTextContainer, signupText, signupButton } = styles;
 
     return (
       <View style={container}>
-          <LoginForm type="Login" />
+          <LoginForm type="Login" onSubmit={this.onNextPage.bind(this)} />
 
           <View style={signupTextContainer}>
             <Text style={signupText}> Don't have an account? </Text>
-            <TouchableOpacity onPress={this.signup}>
+            <TouchableOpacity onPressOut={() => this.props.navigation.navigate('signup')}>
               <Text style={signupButton}>Sign Up</Text>
             </TouchableOpacity>
           </View>

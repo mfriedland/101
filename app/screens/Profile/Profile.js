@@ -8,11 +8,8 @@ class Profile extends Component {
 
     edit() {
         var userId = firebase.auth().currentUser.uid;
-        console.log(userId)
         firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
         var userInfo = (snapshot.val() && snapshot.val()) || 'Anonymous';
-        console.log('line 14', userInfo)
-        Actions.editprofile({ userId, user: userInfo }) // here I need to insert as a prop { something }
        })
     }
 

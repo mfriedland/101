@@ -6,7 +6,7 @@ import { StackNavigator} from 'react-navigation';
 class ChooseUserType extends Component {
 
     _onPress() {
-      Actions.signup()
+      // Actions.signup()
     }
   render() {
     const resizeMode = 'stretch';
@@ -15,18 +15,18 @@ class ChooseUserType extends Component {
         <ImageBackground
           style={{
             flex: 1,
-            resizeMode
+            // resizeMode
           }}
           source={require('../../../assets/ChooseArtistOrFan/flashpage.png') }
           >
             <View style={styles.textContainer}>
-              <TouchableWithoutFeedback onPressOut={this._onPress}>
-                <Text style={styles.artistButton}> I'M AN ARTIST </Text>
+              <TouchableWithoutFeedback onPressOut={() => this.props.navigation.navigate('login')}>
+                <View> <Text style={styles.artistButton}> I'M AN ARTIST </Text> </View>
               </TouchableWithoutFeedback>
             </View>
             <View style={styles.textContainer}>
-              <TouchableWithoutFeedback onPressOut={this._onPress}>
-                <Text style={styles.artistButton}> I'M A FAN </Text>
+              <TouchableWithoutFeedback onPressOut={() => this.props.navigation.navigate('login')}>
+                <View><Text style={styles.artistButton}> I'M A FAN </Text></View>
               </TouchableWithoutFeedback>
             </View>
         </ImageBackground>
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'transparent',
   },
   artistButton: {
         fontSize: 17,

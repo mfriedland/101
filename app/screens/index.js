@@ -1,11 +1,13 @@
 //SETUP
 export * from './SetUp/HomePage';
 export * from './SetUp/ChooseArtistOrFan';
-export * from './Signup';
-export * from './Login';
+export * from './SetUp/Signup';
+export * from './SetUp/Login.js';
 
 //DISCOVER
 export * from './Discover/Trending';
+export * from './Discover/Discover';
+export * from './Discover/Likes';
 
 //PROFILE
 export * from './Profile/Profile';

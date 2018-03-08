@@ -6,8 +6,8 @@ import { Actions } from 'react-native-router-flux';
 class NavBar extends Component {
 
     _onPress() {
+      () => this.props.navigation.navigate('discover')      // Actions.profile()
       // Actions.trending();
-      Actions.profile()
     }
 
   // HomeNavigation = () => {
@@ -15,11 +15,10 @@ class NavBar extends Component {
   // };
 
   render() {
-    console.log('hey', this.props);
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-            <TouchableWithoutFeedback onPress={this._onPress}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('discover')}>
               <Image
                 style={{
                   flexDirection: 'row',

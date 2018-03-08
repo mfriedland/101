@@ -17,6 +17,7 @@ export class LoginForm extends Component {
       password: '',
       error: '',
       loading: false,
+      prop: props,
     }
   }
 
@@ -32,8 +33,10 @@ export class LoginForm extends Component {
   }
 
   onButtonPress() {
+    console.log('line 37', this.state.prop)
+    let nav = this.state.prop.onSubmit;
       const { email, password } = this.props;
-      this.props.loginUser({ email, password })
+      this.props.loginUser({ email, password }, nav);
   }
 
   renderError() {
@@ -60,6 +63,8 @@ export class LoginForm extends Component {
   }
 
   render() {
+    // console.log('line 65', this.state.prop)
+
     return (
       <View style={styles.container}>
           <View>

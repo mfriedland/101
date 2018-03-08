@@ -1,6 +1,6 @@
 {
     "rules": {
         "Parsing error:": 0,
-        "The keyword import is reserved": 0
+        "The keyword 'import' is reserved": 0
     }
 }

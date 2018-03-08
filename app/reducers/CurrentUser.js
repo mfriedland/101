@@ -2,12 +2,16 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import Communications from 'react-native-communications';
+import { AsyncStorage } from 'react-native';
+import { Facebook } from 'expo';
 
 // ACTIONS
-export const LOGIN_USER = 'LOGIN_USER'; // export const LOGIN_USER = 'login_user';
+export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const DELETE_USER = 'DELETE_USER';
+
+// export const FACEBOOK_LOGIN_SUCCESS = 'FACEBOOK_LOGIN_SUCCESS';
 
 // const LOGUT_USER = 'LOGUT_USER';
 export const FIRST_NAME_CHANGED = 'FIRST_NAME_CHANGED';
@@ -22,12 +26,14 @@ export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
 
 
 // ACTION CREATORS
-export const loginUser = ({ email, password }) => {
+export const loginUser = ({ email, password }, nav) => {
+    console.log('hit me baby')
     return (dispatch) => {
         dispatch({ type: LOGIN_USER });
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(user => loginUserSuccess(dispatch, user))
+            .then(user => loginUserSuccess(dispatch, user, nav))
             .catch((error) => {
+                console.log(nav)
                 console.log(error);
                 return loginUserFail(dispatch);
             });
@@ -35,18 +41,36 @@ export const loginUser = ({ email, password }) => {
 };
 
 const loginUserFail = (dispatch) => {
-    dispatch({ type: LOGIN_USER_FAIL });
+    dispatch({ type: LOGIN_USER_FAIL })
 };
 
-const loginUserSuccess = (dispatch, user) => {
+const loginUserSuccess = (dispatch, user, nav) => {
+    console.log('success')
+    console.log(nav)
     dispatch({
-        type: LOGIN_USER_SUCCESS,
-        payload: user
-    });
+            type: LOGIN_USER_SUCCESS,
+            payload: user
+        });
+    nav()
 
-    Actions.pop();
-    Actions.profile() //{ type: 'reset' }); // or start with Actions.pop() b/c it prevents double stacking
+    // Actions.pop();
+    // Actions.profile() //{ type: 'reset' }); // or start with Actions.pop() b/c it prevents double stacking
 };
+
+//  How to use AsyncStorage
+// AsyncStorage.setItem('fb_token', token);
+// AsycnStorage.getItem('fb_token')
+// need to do thunk b/c othewise action creators think youre returning an action right away, and since this is async we need to do reduxThunk or reduxPromise (?)
+// bc theres a single statement within the arrow function
+// we can omit the curly braces and the return (before async dispatch)
+// export const facebookLogin = () => async dispatch => {
+//     let fbToken = await AsyncStorage.getItem('fb_token') //could have done .then or async()
+//     if (fbToken) {
+//         dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: fbToken })
+//     } else {
+//         AsyncStorage.setItem('fb_token')
+//     }
+// };
 
 export const signupUser = ({ firstName, lastName, email, password }) => {
     return (dispatch) => {
@@ -58,7 +82,7 @@ export const signupUser = ({ firstName, lastName, email, password }) => {
             .then(
                 () => {
                     const { currentUser } = firebase.auth();
-                    console.log('firebase', currentUser)
+                    // console.log('firebase', currentUser)
                     return firebase.database().ref(`users/${currentUser.uid}/info`)
                         .set({ firstName, lastName, email, password }) // was using push from tutorial udemy
                 }
@@ -76,8 +100,16 @@ export const updateUser = ({ firstName, lastName, email, password, userId }) => 
     firebase.database().ref(`users/${userId}`)
         .set({ firstName, lastName, email, password })
         .then(() => console.log('saved!'))
-        .then(() => Actions.pop())
-        .then(() => Communications('310-948-2255', 'Your profile has been updated'))
+        // .then(() => Communications.text('310-948-2255', 'Your profile has been updated'))
+        // .then(() => Actions.pop())
+
+};
+
+export const deleteUser = ({ userId }) => dispatch => {
+    dispatch({ type: DELETE_USER })
+    firebase.database().ref(`users/${userId}`)
+        .remove()
+        // .then(() => Actions.home())
 };
 
 // const logoutUser = artist => ({
@@ -114,21 +146,6 @@ export const lastNameChanged = (text) => {
 };
 
 
-
-
-export const deleteCurrentUser = artist => dispatch => {
-    return axios.delete(`/api/artists/${artist.id}`, { id: artist.id })
-        .then(deleted => {
-            if (deleted.data) {
-                dispatch(logoutCurrentUser(user));
-            } else {
-                console.error(`the entered campus id (${user.id}) could not be deleted`);
-            }
-        })
-        .catch(err => console.error('Could not delete user :(', err));
-};
-
-
 // INITIAL STATE
 const INITIAL_STATE = {
     firstName: '',
@@ -151,10 +168,10 @@ export default currentUserReducer = (state = INITIAL_STATE, action) => {
             return {...state, error: 'Authentication Failed.', password: '', loading: false };
 
         case UPDATE_USER:
-            console.log('heres my action:', action)
             return {...state, ...INITIAL_STATE, user: action.payload }
-            // case LOGUT_USER:
-            // return {...state, ...INITIAL_STATE, user: null }
+
+        case DELETE_USER:
+            return {...state, ...INITIAL_STATE, user: {} }
 
         case EMAIL_CHANGED:
             return {...state, email: action.payload };

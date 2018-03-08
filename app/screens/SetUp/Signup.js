@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {  StyleSheet, Text, View, ImageBackground, StatusBar, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux'
-import SignUpForm from '../components/SignUpForm';
+import SignUpForm from '../../components/SignUpForm';
 
 class Signup extends Component {
 
-  login () {
-      Actions.login()
-  }
 
   render() {
     return (
@@ -16,7 +13,7 @@ class Signup extends Component {
           <SignUpForm type="Signup" />
           <View style={styles.loginTextContainer}>
             <Text style={styles.loginText}> Already have an account? </Text>
-            <TouchableOpacity  onPress={this.login}>
+            <TouchableOpacity  onPressOut={() => this.props.navigation.navigate('login')}>
               <Text style={styles.loginButton}> Log in </Text>
             </TouchableOpacity>
           </View>

@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import AllUsers from './AllUsers';
 import Artists from './Artists';
 import CurrentUser from './CurrentUser';
+import Likes from './LikeArtist';
 
 const rootReducer = combineReducers({
     AllUsers,
     Artists,
-    CurrentUser
+    CurrentUser,
+    Likes,
 });
 
 export default rootReducer;

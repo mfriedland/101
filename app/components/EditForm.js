@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { updateUser } from '../reducers/CurrentUser'; //firstNameChanged, lastNameChanged, emailChanged, passwordChanged,
 import { Spinner } from './Spinner'
-import { Signup } from '../pages';
+import { Signup } from '../screens';
 
 
 export class EditForm extends Component {
@@ -34,7 +34,6 @@ export class EditForm extends Component {
 
   render() {
     let user = this.props.user
-    console.log('editProfileForm', this.props)
     return (
       <View style={styles.container}>
           <View>

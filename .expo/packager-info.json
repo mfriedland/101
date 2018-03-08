@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19001,
-  "packagerPort": 19002,
-  "packagerPid": 54171,
-  "expoServerNgrokUrl": "https://j4-hcx.mfriedland.myapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.j4-hcx.mfriedland.myapp.exp.direct",
-  "ngrokPid": 54182
+  "packagerPort": 19001,
+  "packagerPid": 5994,
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://78-emj.mfriedland.fame.exp.direct",
+  "packagerNgrokUrl": "https://packager.78-emj.mfriedland.fame.exp.direct",
+  "ngrokPid": 6021
 }

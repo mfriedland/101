@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux'
-import { StackNavigator} from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
 class HomePage extends Component {
 
-    _onPress() {
-      Actions.choose()
-    }
+
+    // _onPress() {
+    //   // Actions.choose()
+    //   navigation.navigate('login')
+    // }
 
   render() {
     const resizeMode = 'stretch';
     //
     return (
       <View style={styles.container}>
-          <TouchableWithoutFeedback onPressOut={this._onPress}>
+          <TouchableWithoutFeedback onPressOut={() => this.props.navigation.navigate('choose')}>
               <Image
                 style={{
                   flex: 1,
-                  resizeMode
+                  // resizeMode
                 }}
                 source={require('../../../assets/HomePage/FlashScreen.jpg') }
               />

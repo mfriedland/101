@@ -6,11 +6,11 @@ import EditForm from '../../components/EditForm';
 class EditProfile extends Component {
 
   login () {
-      Actions.login()
+      // Actions.login()
   }
 
   render() {
-    console.log('editprofile', this.props.user, this.props.userId)
+    // console.log('editprofile', this.props.user, this.props.userId)
     return (
       <View style={styles.container}>
           <EditForm type="edit" user={this.props.user} userId={this.props.userId} />
