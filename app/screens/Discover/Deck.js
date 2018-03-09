@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { swipeRightArtist } from '../../reducers/LikeArtist'
 import store from '../../store'
+import styles from '../../stylesheets'
+
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -98,7 +100,7 @@ class Deck extends Component {
         return (
           <Animated.View
             key={item.id}
-            style={[this.getCardStyle(), styles.cardStyle, { zIndex: 99 }]}
+            style={[this.getCardStyle(), styles.cardDeckStyle, { zIndex: 99 }]}
             {...this.state.panResponder.panHandlers}
           >
             {this.props.renderCard(item)}
@@ -109,7 +111,7 @@ class Deck extends Component {
       return (
         <Animated.View
           key={item.id}
-          style={[styles.cardStyle]}
+          style={[styles.cardDeckStyle]}
         >
           {this.props.renderCard(item)}
         </Animated.View>
@@ -118,7 +120,6 @@ class Deck extends Component {
   }
 
   render() {
-    console.log('WORK!', this.props.likes)
     return (
       <View>
         {this.renderCards()}
@@ -137,16 +138,4 @@ const mapDispatch = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatch)(Deck)
-
-const styles = {
-  cardStyle: {
-    position: 'absolute',
-    width: SCREEN_WIDTH,
-    height: 500,
-    backgroundColor: 'white',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-};
 

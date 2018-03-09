@@ -6,6 +6,7 @@ import {View, StyleSheet, Image,  } from 'react-native'
 import { connect } from 'react-redux';
 import { fetchUsers } from '../reducers/AllUsers'
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
+// import styles from '../stylesheets'
 
 export class Route extends Component {
 
@@ -24,7 +25,7 @@ export class Route extends Component {
       main: {
         screen: TabNavigator(
         {
-          home: { screen: HomePage },
+          profile: { screen: Profile },
           explore: {
             screen: StackNavigator({
               discover: { screen: Discover, path: 'discover/:name'},
@@ -33,7 +34,8 @@ export class Route extends Component {
           },
           trending: { screen: Trending },
           faves: { screen: Likes },
-          profile: { screen: Profile },
+          share: { screen: SharePage },
+
         },
         {
           navigationOptions: ({ navigation }) => ({
@@ -79,20 +81,22 @@ export class Route extends Component {
 
 
     return(
-        <View style={styles.container}>
-          <View style={styles.container}>
-            <NavBar headerText={'Albums'} />
-          </View>
-          <View style={styles.containerLarge}>
-            <MainNavigator />
-          </View>
-        </View>
+      <View style={styles.container}>
+      <View style={styles.container}>
+        <NavBar headerText={'Albums'} />
+      </View>
+      <View style={styles.containerLarge}>
+        <MainNavigator />
+      </View>
+    </View>
     )
   }
 }
 // <View style={styles.container}>
 //             <MenuBar />
-//           </View>
+{/* <View style={styles.container}>
+<NavBar headerText={'Albums'} />
+</View> */}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

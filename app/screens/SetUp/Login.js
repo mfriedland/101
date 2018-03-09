@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
@@ -7,6 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import LoginForm from '../../components/LoginForm';
 import store from '../../store.js'
 import { fetchUsers } from '../../reducers/AllUsers'
+import styles from '../../stylesheets'
 
 
 class Login extends Component {
@@ -46,10 +47,10 @@ class Login extends Component {
       <View style={container}>
           <LoginForm type="Login" onSubmit={this.onNextPage.bind(this)} />
 
-          <View style={signupTextContainer}>
-            <Text style={signupText}> Don't have an account? </Text>
+          <View style={styles.signupNavigateTextContainer}>
+            <Text style={styles.signupNavigateText}> Don't have an account? </Text>
             <TouchableOpacity onPressOut={() => this.props.navigation.navigate('signup')}>
-              <Text style={signupButton}>Sign Up</Text>
+              <Text style={styles.signupNavigateButton}>Sign Up</Text>
             </TouchableOpacity>
           </View>
 
@@ -66,30 +67,4 @@ export { Login };
 // }
 
 export default connect(null, { fetchUsers })(Login);
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor: '#12092f',
-  },
-  signupTextContainer: {
-    flexGrow: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    paddingVertical: 16,
-    flexDirection: 'row'
-
-  },
-  signupText: {
-    fontSize: 13,
-    color: 'rgb(252,197,76)',
-  },
-  signupButton: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: 'rgb(252,197,76)',
-  },
-});
 

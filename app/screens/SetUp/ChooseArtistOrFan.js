@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux'
 import { StackNavigator} from 'react-navigation';
+import styles from '../../stylesheets'
 
 class ChooseUserType extends Component {
 
@@ -19,14 +20,19 @@ class ChooseUserType extends Component {
           }}
           source={require('../../../assets/ChooseArtistOrFan/flashpage.png') }
           >
-            <View style={styles.textContainer}>
+            <View style={styles.chooseUserTextContainer}>
               <TouchableWithoutFeedback onPressOut={() => this.props.navigation.navigate('login')}>
-                <View> <Text style={styles.artistButton}> I'M AN ARTIST </Text> </View>
+                <View>
+                  <Text style={styles.selectUserTypeButton}>
+                  I'M AN ARTIST </Text>
+                </View>
               </TouchableWithoutFeedback>
             </View>
-            <View style={styles.textContainer}>
+            <View style={styles.chooseUserTextContainer}>
               <TouchableWithoutFeedback onPressOut={() => this.props.navigation.navigate('login')}>
-                <View><Text style={styles.artistButton}> I'M A FAN </Text></View>
+                <View>
+                  <Text style={styles.selectUserTypeButton}> I'M A FAN </Text>
+                </View>
               </TouchableWithoutFeedback>
             </View>
         </ImageBackground>
@@ -37,22 +43,3 @@ class ChooseUserType extends Component {
 
 export { ChooseUserType }
 
-const styles = StyleSheet.create({
-  textContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-  },
-  artistButton: {
-        fontSize: 17,
-        fontWeight: '700',
-        color: 'white',
-        letterSpacing: 5,
-    },
-  editButton: {
-        fontSize: 17,
-        fontWeight: '500',
-        color: 'white',
-    },
-});

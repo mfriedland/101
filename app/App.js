@@ -32,11 +32,24 @@ export default class myapp extends Component {
 
     return (
       <Provider store={ store }>
-        <Routes />
+        <View style={styles.container}>
+          <Routes />
+        </View>
       </Provider>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#12092f',
+  },
+  containerLarge: {
+    flexGrow: 12,
+    backgroundColor: '#12092f',
+  },
+});
 
 
 

@@ -33,18 +33,22 @@ export class SignUpForm extends Component {
 
     renderButton() {
         if (this.props.loading) {
-            return <Spinner size = "large" / >
+            return <Spinner size = "large" />
         }
-        return ( <TouchableOpacity onPress = { this.onButtonPress.bind(this) } >
-            <Text style = { styles.buttonText } > I'M READY </Text> </TouchableOpacity>
+        return (
+            <TouchableOpacity onPress = {this.onButtonPress.bind(this)} >
+            <Text style={styles.buttonText}> I'M READY </Text>
+        </TouchableOpacity>
         )
     }
+
 
     renderError() {
         if (this.props.error) {
             return (
                 <View style = {{ backgroundColor: 'white' } } >
-                    <Text style = { styles.errorTextStyle } > { this.props.error } </Text>
+                    <Text style = {styles.errorTextStyle}> { this.props.error}
+                    </Text>
                 </View>
             )
         }
@@ -72,15 +76,15 @@ export class SignUpForm extends Component {
                 // onChangeText={text => this.setState({ lastName : text })}
                 />
                 <TextInput style = { styles.inputBox }
-                placeholder = "Email Address "
-                placeholderTextColor = 'lightgrey'
-                onChangeText = { this.onEmailChange.bind(this) }
+                    placeholder = "Email Address "
+                    placeholderTextColor = 'lightgrey'
+                    onChangeText = { this.onEmailChange.bind(this) }
                 // onChangeText={text => this.setState({ email : text })}
                 />
                 <TextInput style = { styles.inputBox }
-                placeholder = "Password"
-                placeholderTextColor = 'lightgrey'
-                onChangeText = { this.onPasswordChange.bind(this) }
+                    placeholder = "Password"
+                    placeholderTextColor = 'lightgrey'
+                    onChangeText = { this.onPasswordChange.bind(this) }
                 // onChangeText={text => this.setState({ password : text })}
                 />
 
@@ -88,14 +92,13 @@ export class SignUpForm extends Component {
 
             { this.renderError() }
 
-                <Text style = {
-                    { color: 'lightgrey' } } > or sign up with </Text>
-                <View style = { styles.signupButtons } >
-                <Image style = { styles.signupButton }
-                source = { require('../../assets/SignUpPage/facebook.png') }
+                <Text style={{ color: 'lightgrey' }} > or sign up with </Text>
+                <View style={styles.signupButtons}>
+                <Image style = {styles.signupButton}
+                source = {require('../../assets/SignUpPage/facebook.png') }
                 />
-                <Image style = { styles.signupButton }
-                source = { require('../../assets/SignUpPage/twitter.png') }
+                <Image style = {styles.signupButton}
+                source = {require('../../assets/SignUpPage/twitter.png') }
                 />
                 <Image style = { styles.signupButton }
                 source = { require('../../assets/SignUpPage/google.png') }
@@ -167,14 +170,14 @@ const styles = StyleSheet.create({
 });
 
 
-// state = {
-//   firstName: '',
-//   lastName: '',
-//   email: '',
-//   password: '',
-//   error: '',
-//   loading: false,
-// }
+{/* state = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  error: '',
+  loading: false,
+} */}
 
 // inputChange(event) {
 //   this.setState({ event.target.name: event.target.value });

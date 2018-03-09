@@ -55,22 +55,6 @@ class MenuBar extends Component {
                   source={require('../../assets/MenuBar/profile.png')} />
               </TouchableOpacity>
             </View>
-          {
-          //   <View style={styles.lineContainer} >
-          //   <Image
-          //     style={{
-          //       // flexDirection:'row',
-          //       alignItems: 'center',
-          //       // justifyContent :'center',
-          //       marginTop: 10,
-          //       // marginLeft: 20,
-          //       width: '95%'
-          //     }}
-          //     source={require('../../assets/MenuBar/VerticalLines/group.png') }
-          //   />
-          // </View>
-            }
-
       </View>
 
     );

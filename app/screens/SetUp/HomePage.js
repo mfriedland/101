@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux'
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import styles from '../../stylesheets'
 
 class HomePage extends Component {
 
@@ -12,7 +13,7 @@ class HomePage extends Component {
     // }
 
   render() {
-    const resizeMode = 'stretch';
+    // const resizeMode = 'stretch';
     //
     return (
       <View style={styles.container}>
@@ -20,6 +21,8 @@ class HomePage extends Component {
               <Image
                 style={{
                   flex: 1,
+                  height: 400,
+                  width: 400,
                   // resizeMode
                 }}
                 source={require('../../../assets/HomePage/FlashScreen.jpg') }
@@ -30,13 +33,13 @@ class HomePage extends Component {
     );
   }
 }
+// const styles = StyleSheet.create({
+//   container: {
+//     flexGrow: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#12092f',
+//   },
+// });
 
 export { HomePage }
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#12092f',
-  },
-});
