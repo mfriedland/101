@@ -33,7 +33,6 @@ export class LoginForm extends Component {
   }
 
   onButtonPress() {
-    console.log('line 37', this.state.prop)
     let nav = this.state.prop.onSubmit;
       const { email, password } = this.props;
       this.props.loginUser({ email, password }, nav);
@@ -63,7 +62,6 @@ export class LoginForm extends Component {
   }
 
   render() {
-    // console.log('line 65', this.state.prop)
 
     return (
       <View style={styles.container}>
@@ -177,7 +175,6 @@ const styles = StyleSheet.create({
 //         })
 //           .then( response => response.data)
 //           .then(loginedUser => {
-//             console.log('working')
 //             alert("you've signed in")
 //             Actions.profile()
 

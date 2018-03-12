@@ -5,6 +5,16 @@ import firebase from 'firebase';
 
 // type Props = {};
 class Profile extends Component {
+    static navigationOptions = {
+            title: 'fame',
+            headerStyle: {
+              backgroundColor: 'white',
+              tintColor:'rgb(252,197,76)',
+            },
+            headerLeft: <Button title='Share' color='white' />,
+            headerTintColor: 'rgb(252,197,76)',
+           }
+
 
     edit() {
         var userId = firebase.auth().currentUser.uid;
@@ -22,21 +32,15 @@ class Profile extends Component {
         return (
             <View style = { styles.container } >
                 <ImageBackground
-                    source={require('../../../assets/ArtistProfile/ArtistProfile.png')}
+                    source={require('../../../assets/ArtistProfile2/ArtistProfile2.png')}
                     // style = {{transform: [{scaleX: .9}, {scaleY: .9}]}}
                     style={{flexGrow: 1,
-                            width: 350,
+                            width: 370,
                             height: 700,
                             // flexDirection: 'row',
                             // justifyContent: 'center',
                             alignItems: 'stretch',}}
                     >
-                    <View style={styles.signupTextContainer}>
-
-                        <TouchableOpacity onPress={this.edit.bind(this)}>
-                        <Text style={styles.editButton} > Edit </Text>
-                        </TouchableOpacity>
-                    </View>
                 </ImageBackground>
              </View>
         );

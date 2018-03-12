@@ -12,7 +12,7 @@ export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
 // THUNKS ? FUNCTIONS
 export const fetchUsers = () => {
     return (dispatch) => {
-        console.log("HEY its working? because i dont have it restricted for loggedin users only")
+        // console.log("HEY its working? because i dont have it restricted for loggedin users only")
         firebase.database().ref('/users').on('value', snapshot => {
             return dispatch({
                 type: FETCH_USERS_SUCCESS,

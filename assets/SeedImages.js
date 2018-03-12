@@ -1,7 +1,7 @@
 
 
 let musicians = [
-  {id: 1, image: "http://mmusicmag.com/m/wp-content/uploads/2015/07/No39-imagine-dragons-1.jpg"},
+  {id: 1, image: 'https://consequenceofsound.files.wordpress.com/2016/02/radiohead.jpg?quality=80&w=807', video: "https://www.youtube.com/watch?v=sULnyRvwHA4"},
   {id: 2, image: 'http://campbellriver.whatsondigest.com/sites/default/files/styles/galleryformatter_slide/public/event_photographs/Taylor-Swift.jpg?itok=fxVIj1O5'},
   {id: 3, image: 'https://www.grammy.com/sites/com/files/styles/image_landscape_hero/public/justinbieber-hero-498329920.jpg?itok=03MYx1T4'},
   {id: 4, image: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjAwNTE2MDMyMl5BMl5BanBnXkFtZTgwMjAyODM3MTI@._V1_UY317_CR12,0,214,317_AL_.jpg'},
@@ -9,7 +9,7 @@ let musicians = [
   {id: 6, image: 'https://cbsmix965houston.files.wordpress.com/2017/06/twentyonepilots-promo5-jabarijacobs4.jpg?w=640&h=360&crop=1'},
   {id: 7, image: 'https://www.grammy.com/sites/com/files/styles/image_landscape_hero/public/thechainsmokers-hero-515589828.jpg?itok=9N6Nl5b5'},
   {id: 8, image: 'http://mmusicmag.com/m/wp-content/uploads/2015/07/No39-imagine-dragons-1.jpg'},
-  {id: 9, image: 'https://consequenceofsound.files.wordpress.com/2016/02/radiohead.jpg?quality=80&w=807'},
+  {id: 9, image: "http://mmusicmag.com/m/wp-content/uploads/2015/07/No39-imagine-dragons-1.jpg"},
   {id: 10, image: 'https://cps-static.rovicorp.com/3/JPG_400/MI0003/484/MI0003484550.jpg?partner=allrovi.com'},
   {id: 11, image: 'http://www.alternativenation.net/wp-content/uploads/2016/05/morrisseyrhcp.jpg'},
   {id: 12, image: 'http://cashboxmagazine.com/wp-content/uploads/2018/01/the_beatles.jpg'},

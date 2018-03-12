@@ -10,13 +10,16 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#12092f',
+    backgroundColor: '#12092f',
   },
   containerNoGrow: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#12092f',
+    backgroundColor: '#12092f',
+  },
+  mainNavigatorFullContainer: {
+    flex: 1
   },
   mainNavigatorContainer: {
     flexGrow: 13,

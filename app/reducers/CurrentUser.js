@@ -33,20 +33,21 @@ export const loginUser = ({ email, password }, nav) => {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(user => loginUserSuccess(dispatch, user, nav))
             .catch((error) => {
-                console.log(nav)
-                console.log(error);
-                return loginUserFail(dispatch);
+                // console.log(nav)
+                // console.log(error);
+                return loginUserFail(dispatch, nav);
             });
     };
 };
 
-const loginUserFail = (dispatch) => {
-    dispatch({ type: LOGIN_USER_FAIL })
+const loginUserFail = (dispatch, nav) => {
+    dispatch({ type: LOGIN_USER_FAIL });
+    nav()
 };
 
 const loginUserSuccess = (dispatch, user, nav) => {
-    console.log('success')
-    console.log(nav)
+    // console.log('success')
+    // console.log(nav)
     dispatch({
             type: LOGIN_USER_SUCCESS,
             payload: user
@@ -148,10 +149,11 @@ export const lastNameChanged = (text) => {
 
 // INITIAL STATE
 const INITIAL_STATE = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    id: 1,
+    firstName: 'Micah',
+    lastName: 'Friedland',
+    email: 'micah@gmail.com',
+    password: 'Password',
     user: null,
     error: '',
     loading: false

@@ -29,7 +29,7 @@ class ChooseUserType extends Component {
               </TouchableWithoutFeedback>
             </View>
             <View style={styles.chooseUserTextContainer}>
-              <TouchableWithoutFeedback onPressOut={() => this.props.navigation.navigate('login')}>
+              <TouchableWithoutFeedback onPressOut={() => this.props.navigation.navigate('signup')}>
                 <View>
                   <Text style={styles.selectUserTypeButton}> I'M A FAN </Text>
                 </View>

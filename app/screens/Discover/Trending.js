@@ -3,55 +3,44 @@ import React, { Component } from 'react';
 import { FlatList, View, StyleSheet, Button, Dimensions, Image, Text, TouchableHighlight, Modal } from 'react-native';
 import store from '../../store.js'
 import { fetchUsers } from '../../reducers/AllUsers'
-import {ModalView} from '../../components/ModalView'
+import { ModalView } from '../../components/ModalView'
 import { musicians, dancers, models } from '../../../assets/SeedImages'
 const ITEM_WIDTH = Dimensions.get('window').width
 
 class Trending extends Component {
 
-  state = {
-    columns: 3,
-    key: 1,
-    array: [],
-    modalVisible: false,
-    id: null,
-  }
+
 
   constructor(props) {
     super(props)
+    this.state = {
+      columns: 3,
+      key: 1,
+      array: [],
+      modalVisible: false,
+      id: 2,
+    }
   }
 
 
-_onPressItem = (id) => {
-    // updater functions are preferred for transactional updates
-    this.setState((state) => {
-      // copy the map rather than modifying state.
-      const selected = new Map(state.selected);
-      selected.set(id, !selected.get(id)); // toggle
-      return {selected};
-    });
-  };
-
-_setModalVisible(visible) {
-  // console.log( item.id)
-  // this.setState({
-  //   modalVisible: visible,
-  //   id: 1
-  //   });
+_setModalVisible(visible, item) {
+  if (item) {
+    id = item - 1
+    this.setState({ modalVisible: visible, id: id});
+  } else  this.setState({ modalVisible: visible })
 }
 
-// _onPressItem(id) {
-//   this.setState({
-//     modalVisible: true,
-//     id: id,
-//   });
-// };
+_renderItem = ({item}) => (
+     <TouchableHighlight id={item.id} onPress={() => this._setModalVisible(true,item.id)} >
+       <Image style={styles.trendingImage} source={{ uri: item.image }} />
+     </TouchableHighlight>
+)
 
  render() {
-
     const { columns, key, array } = this.state
-   const itemWidth=((ITEM_WIDTH - (10*columns)) / columns)
-   return (
+    const itemWidth=((ITEM_WIDTH - (10*columns)) / columns)
+
+    return (
       <View style={styles.container}>
         <View style={styles.headingTextContainer}>
             <Text style={styles.headingText}> Musicians </Text>
@@ -66,9 +55,10 @@ _setModalVisible(visible) {
               keyExtractor= {(item, index) => index }
               // numColumns={columns}
               data={musicians}
-              renderItem={({item, index}) => <TouchableHighlight id={item.id} onPress={this._setModalVisible} >
-                  <Image style={styles.trendingImage} source={{ uri: item.image }} />
-                  </ TouchableHighlight> }
+              renderItem={this._renderItem}
+                // ({item, index}) => <TouchableHighlight id={item.id} onPress={this._setModalVisible.bind(this)} >
+                //   <Image style={styles.trendingImage} source={{ uri: item.image }} />
+                //   </ TouchableHighlight> }
             />
           </View>
           <View style={styles.flatlistStyle}>
@@ -76,9 +66,7 @@ _setModalVisible(visible) {
             keyExtractor= {(item, index) => index }
             // numColumns={columns}
             data={dancers}
-            renderItem={({item, index}) => <View>
-              <Image style={styles.trendingImage} source={{ uri: item.image }} />
-              </View> }
+            renderItem={this._renderItem}
             />
           </View>
           <View style={styles.flatlistStyle}>
@@ -86,16 +74,15 @@ _setModalVisible(visible) {
             keyExtractor= {(item, index) => index }
             // numColumns={columns}
             data={models}
-            renderItem={({item, index}) => <View>
-              <Image style={styles.trendingImage} source={{ uri: item.image }} />
-              </View> }
+            renderItem={this._renderItem}
           />
           </View>
         </View>
         <ModalView
             modalVisible={ this.state.modalVisible }
-            setModalVisible={ (vis) => { this._setModalVisible(vis) }}
+            setModalVisible={ (vis) => { this._setModalVisible(false) }}
             id={ this.state.id }
+            style={{display:'flex',height:800, width:800, alignItems: 'center', justifyContent: 'center'}}
             />
       </View>
    )
@@ -109,12 +96,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#12092f',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
 },
   headingTextContainer: {
     // flex: 1,
     // alignItems:'center',
+    marginTop: 45,
     justifyContent :'space-between',
     height: 20,
     flexDirection:'row'

@@ -14,7 +14,8 @@ const SWIPE_OUT_DURATION = 250;
 
 class Deck extends Component {
   static defaultProps = {
-    onSwipeRight: (artist) =>  store.dispatch(swipeRightArtist(artist)), // this.props.like(artist),
+    onSwipeRight: (artist) =>  store.dispatch(swipeRightArtist(artist)),
+    //this.props.like(artist),
     onSwipeLeft: () => {}
   }
 
@@ -120,6 +121,7 @@ class Deck extends Component {
   }
 
   render() {
+    // console.log('page 123', this.props)
     return (
       <View>
         {this.renderCards()}

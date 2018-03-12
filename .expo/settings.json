@@ -1,8 +1,8 @@
 {
-  "urlRandomness": "qt-e6y",
-  "hostType": "tunnel",
+  "urlRandomness": "23-msy",
+  "hostType": "lan",
   "lanType": "ip",
-  "dev": true,
+  "dev": false,
   "strict": false,
   "minify": false,
   "urlType": "exp"

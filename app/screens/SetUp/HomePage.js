@@ -33,6 +33,12 @@ class HomePage extends Component {
     );
   }
 }
+
+// const mapStateToProps = state => ({
+//   navigation: state.nav,
+// });
+// export default connect(mapStateToProps)(HomepAge);
+
 // const styles = StyleSheet.create({
 //   container: {
 //     flexGrow: 1,
