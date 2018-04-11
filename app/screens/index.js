@@ -1,18 +1,6 @@
-//SETUP
-export * from './SetUp/HomePage';
-export * from './SetUp/ChooseArtistOrFan';
-export * from './SetUp/Signup';
-export * from './SetUp/Login.js';
 
-//DISCOVER
-export * from './Discover/Trending';
-export * from './Discover/Discover';
-export * from './Discover/Likes';
-
-//PROFILE
-export * from './Profile/Profile';
-export * from './Profile/EditProfile';
-export * from './Profile/SharePage';
+export * from './HomePage';
+export * from './Detail';
 
 //STANDARD
 export * from './MenuBar';

@@ -1,18 +1,10 @@
 import { combineReducers } from 'redux';
-import AllUsers from './AllUsers';
-import Artists from './Artists';
-import CurrentUser from './CurrentUser';
-import Likes from './LikeArtist';
-// import NavReducer from './Navigation';
+import Images from './Images';
 
 const rootReducer = combineReducers({
-    // NavReducer,
-    AllUsers,
-    Artists,
-    CurrentUser,
-    Likes,
+    Images,
 });
 
 export default rootReducer;
 
-export * from './Artists';
+export * from './Images';
