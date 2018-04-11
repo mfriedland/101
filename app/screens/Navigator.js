@@ -11,9 +11,9 @@ const Navigator =
         headerStyle: {
           backgroundColor: '#12092f',
           tintColor:'white',
-        }
-      }),
-    },
+          }
+        }),
+      },
     })
 
 

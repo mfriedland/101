@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import styles from '../stylesheets'
-// import { ImageList, Search } from '../components'
+import ImageList from '../components/ImageList'
 import Search from '../components/Search'
-import ImageList from '../components/Search'
 
 class HomePage extends Component {
   static navigationOptions = {
@@ -21,10 +20,9 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { images } = state.Images;
-};
-
+const mapStateToProps = state => ({
+  navigation: state.nav,
+});
 export default connect(mapStateToProps)(HomePage);
 
 export { HomePage }

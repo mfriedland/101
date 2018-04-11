@@ -3,37 +3,28 @@ import { StyleSheet, View, Animated, PanResponder, Dimensions, LayoutAnimation, 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: 'lightgrey',
   },
-  containerNoGrow: {
+  searchContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'lightgrey',
-  },
-  mainNavigatorFullContainer: {
-    flex: 1
-  },
-  mainNavigatorContainer: {
-    flexGrow: 13,
+    flexDirection: 'row'
   },
   inputBox: {
-      width: 300.3,
-      height: 15.3,
-      // fontFamily: "WorkSans",
-      fontSize: 20.7,
-      fontWeight: "normal",
-      fontStyle: "normal",
-      letterSpacing: 0,
-      textAlign: "left",
-      marginVertical: 20,
-      color: "#ffffff"
+    width: 300,
+    height: 15.3,
+    paddingLeft: 20,
+    // fontFamily: "WorkSans",
+    fontSize: 20.7,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "left",
+    marginVertical: 20,
+    color: "#ffffff"
   },
   searchInput: {
     backgroundColor: '#222222',
@@ -47,10 +38,30 @@ export const styles = StyleSheet.create({
     marginRight: '20px',
   },
   searchButton: {
-    backgroundColor: '#7a8288',
-    border: 'none',
-    height: '20px',
-    fontSize: '16px',
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '700',
+    marginVertical: 20,
+    backgroundColor: 'grey'
+  },
+  modalContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    flex: 1,
+  },
+  modalImage: {
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT/2,
+  },
+  modalTextContainer: {
+    backgroundColor: 'rgba(0,0,0,1)',
+    width: SCREEN_WIDTH
+  },
+  modalText: {
+    color: 'white',
+    fontSize: '15'
   }
 })
 

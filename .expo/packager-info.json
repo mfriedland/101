@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19008,
-  "packagerPort": 19007,
-  "packagerPid": 7444,
+  "expoServerPort": 19000,
+  "packagerPort": 19002,
+  "packagerPid": 9502,
   "expoServerNgrokUrl": "https://23-msy.mfriedland.101.exp.direct",
   "packagerNgrokUrl": "https://packager.23-msy.mfriedland.101.exp.direct",
-  "ngrokPid": 7456
+  "ngrokPid": 9516
 }
