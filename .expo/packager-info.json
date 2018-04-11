@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 4750,
-  "expoServerNgrokUrl": "https://23-msy.mfriedland.fame-app.exp.direct",
-  "packagerNgrokUrl": "https://packager.23-msy.mfriedland.fame-app.exp.direct",
-  "ngrokPid": 4768
+  "packagerPid": 36178,
+  "expoServerNgrokUrl": "https://kv-t2t.mfriedland.101-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.kv-t2t.mfriedland.101-app.exp.direct",
+  "ngrokPid": 36189
 }
