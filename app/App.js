@@ -28,11 +28,8 @@ export default class myapp extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#12092f',
-  },
-  containerLarge: {
-    flexGrow: 12,
-    backgroundColor: '#12092f',
+    backgroundColor: 'green',
+    marginTop: 30,
   },
 });
 

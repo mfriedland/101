@@ -25,11 +25,9 @@ export class Route extends Component {
 
   render() {
     return(
-      <View style={styles.mainNavigatorFullContainer}>
-      <View style={styles.mainNavigatorContainer}>
+      <View style={{flex:1, backgroundColor: 'green'}}>
         <Navigator />
       </View>
-    </View>
     )
   }
 }

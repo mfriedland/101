@@ -26,9 +26,8 @@ export class Search extends Component {
   }
 
   onButtonPress() {
-    // let nav = this.state.prop.onSubmit;
-    //   const { email, password } = this.props;
       this.props.fetchImages(this.state.search);
+      this.setState({search: ''})
   }
 
   renderError() {
@@ -49,21 +48,20 @@ export class Search extends Component {
     }
     return (
       <TouchableOpacity onPress={this.onButtonPress.bind(this)}>
-            <Text style={styles.loginButton} > Search </Text>
+        <Text style={styles.loginButton} > Search </Text>
       </TouchableOpacity>
     )
   }
 
   render() {
-
+    console.log('search', this.props)
     return (
-      <View >
+      <View style={{flex: 1, backgroundColor: 'lightgrey', flexDirection: 'row'}}>
             <TextInput
             style={styles.inputBox}
             placeholder="Search Images"
             value={this.props.search}
-            placeholderTextColor='lightgrey'
-            // keyboardType="email-address"
+            placeholderTextColor='white'
             autoCorrect={false}
             onChangeText={this.onSearchChange.bind(this)}
             />
@@ -76,13 +74,11 @@ export class Search extends Component {
   }
 }
 
-// const mapStateToProps = ({ CurrentUser } ) => {
-//   const { email, password, error, loading } = CurrentUser;
+const mapStateToProps = (state) => {
+  return { images } = state.Images;
+};
 
-//   return { email, password, error, loading }
-// };
-
-export default connect(null, {fetchImages})(Search)
+export default connect(mapStateToProps, {fetchImages})(Search)
 
 const styles = StyleSheet.create({
   container: {
@@ -95,6 +91,7 @@ const styles = StyleSheet.create({
   inputBox: {
     width: 300,
     height: 15.3,
+    paddingLeft: 20,
     // fontFamily: "WorkSans",
     fontSize: 20.7,
     fontWeight: "normal",
@@ -107,9 +104,10 @@ const styles = StyleSheet.create({
 
   loginButton: {
     fontSize: 16,
-    color: 'rgb(252,197,76)',
+    color: 'white',
     fontWeight: '700',
     marginVertical: 20,
+    backgroundColor: 'grey'
   },
   signupButtons: {
     flexDirection: 'row',
