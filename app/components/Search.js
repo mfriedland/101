@@ -21,14 +21,14 @@ export class Search extends Component {
 
   onButtonPress() {
       this.props.fetchImages(this.state.search);
-      this.props.deleteImages();
-      this.setState({search: ''})
+      // this.props.deleteImages();
+      // this.setState({search: ''})
   }
 
   renderButton() {
     return (
-      <TouchableOpacity onPress={this.onButtonPress.bind(this)}>
-        <Text style={styles.searchButton} > Search </Text>
+      <TouchableOpacity style={styles.searchButton} onPress={this.onButtonPress.bind(this)}>
+        <Text style={styles.searchButtonText}> Search </Text>
       </TouchableOpacity>
     )
   }
@@ -37,7 +37,7 @@ export class Search extends Component {
     return (
       <View style={styles.searchContainer}>
             <TextInput
-            style={styles.inputBox}
+            style={styles.searchInput}
             placeholder="Search Images"
             value={this.props.search}
             placeholderTextColor='white'

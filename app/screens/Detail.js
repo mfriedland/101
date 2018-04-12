@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Button } from 'react-native';
-// import styles from '../../stylesheets'
+import { View } from 'react-native';
 
 class Detail extends Component {
 

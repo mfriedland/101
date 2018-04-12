@@ -1,8 +1,14 @@
 const GET_IMAGES = 'GET_IMAGES';
+const GET_ALL_IMAGES = 'GET_ALL_IMAGES';
 const DELETE_SEARCH = 'DELETE_SEARCH'
 
 const getImages = images => ({
     type: GET_IMAGES,
+    images,
+});
+
+const getAllImages = () => ({
+    type: GET_ALL_IMAGES,
     images,
 });
 
@@ -29,9 +35,15 @@ export const deleteImages = (searchText) => dispatch => {
     dispatch(deleteSearch())
 }
 
+export const fetchAllImages = () => dispatch => {
+    dispatch(getAllImages())
+}
+
 export default imagesReducer = (state = [], action) => {
 
     switch (action.type) {
+        case GET_ALL_IMAGES:
+            return state;
         case GET_IMAGES:
             return action;
         case DELETE_SEARCH:

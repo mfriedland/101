@@ -1,36 +1,20 @@
 import React, {Component} from 'react';
+import { View } from 'react-native'
 import { connect } from 'react-redux';
 import Navigator from './Navigator'
-import store from '../store'
 import styles from '../stylesheets'
-import {View, StyleSheet, Image, Button } from 'react-native'
-import {  NavBar} from './index';
+import { fetchAllImages } from '../reducers'
 
-
-let currentUser;
-export class Route extends Component {
-  constructor() {
-    super()
-    this.state = store.getState();
-
-  }
-
-  componentDidMount () {
-    this.unsubscribe = store.subscribe(() => this.setState(store.getState()));
-  }
-
-  componentWillUnmount () {
-    this.unsubscribe();
-  }
-
-  render() {
-    return(
-      <View style={{flex:1, backgroundColor: 'green'}}>
-        <Navigator />
-      </View>
-    )
-  }
+const Routes = () =>  {
+  return(
+    <View style={styles.container}>
+      <Navigator />
+    </View>
+  )
 }
 
+const mapStateToProps = (state) => {
+  return { images } = state.Images || [];
+};
 
-export default connect(null)(Route);
+export default connect(mapStateToProps, {fetchAllImages})(Routes)

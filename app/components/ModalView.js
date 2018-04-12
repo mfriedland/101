@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, StyleSheet, Button, Dimensions, Image, Text, TouchableHighlight, Modal } from 'react-native';
+import { FlatList, View, StyleSheet, Button, Dimensions, Image, Text, TouchableHighlight, Modal, ImageBackground } from 'react-native';
 import styles from '../stylesheets'
 
 export default class ModalView extends Component {
@@ -20,8 +20,6 @@ export default class ModalView extends Component {
 
   render() {
     image = this.props.image
-    if (image) console.log('modal image', image.image)
-
     return (
        <Modal
         // animationType="slide"
@@ -37,7 +35,9 @@ export default class ModalView extends Component {
             >
               {image &&
               <View style={{flex:1}} >
-                <Image style={{flex:1}} source={{uri: image.image}} />
+                <ImageBackground style={styles.modalImageBackground} source={{uri: image.image}}>
+                  <Text style={styles.modalX}> X </Text>
+                </ImageBackground>
                 <View style={styles.modalTextContainer}>
                   <Text style={styles.modalText}>User: {image.user} </Text>
                   <Text style={styles.modalText}>Tags: {image.tags}</Text>

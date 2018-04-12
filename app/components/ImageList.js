@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList, Image, TouchableHighlight } from 'react-nat
 import { connect } from 'react-redux';
 import styles from '../stylesheets'
 import ModalView from './ModalView'
+import { fetchAllImages } from '../reducers'
 
 let imageResults = []
 
@@ -19,21 +20,22 @@ export class ImageList extends Component {
   }
 
   componentDidMount() {
-    // imageResults = [];
-    // this.setState({imageResults})
-
+    this.props.fetchAllImages();
     imageResults = this.props.images
     this.setState({imageResults})
   }
 
+  componentWillUnmount() {
+    this.setState(this.state)
+  }
+
   _renderItem = ({item}) => (
-        <TouchableHighlight style={{height: 100, width: '30%', alignContent: 'space-between', justifyContent: 'space-between', marginBottom: 10, marginHorizontal:'1.667%'}} id={item.id} onPress={() => this._setModalVisible(true,item)} >
-          <Image style={{flex:1}} source={{ uri: item.image }} />
+        <TouchableHighlight style={styles.imagesContainer} id={item.id} onPress={() => this._setModalVisible(true,item)} >
+          <Image style={styles.image} source={{ uri: item.image }} />
         </TouchableHighlight>
   )
   _setModalVisible(visible, item) {
     if (item) {
-      // id = item - 1
       this.setState({ modalVisible: visible, selectedImage: item});
     } else  this.setState({ modalVisible: visible })
   }
@@ -41,20 +43,20 @@ export class ImageList extends Component {
   render() {
     console.log('images', this.props.images)
     return (
-      <View className="page" style={{flex: 10, backgroundColor: 'white'}}>
+      <View style={styles.imagesListContainer}>
         <FlatList
           keyExtractor= {(item, index) => index }
           numColumns={this.state.columns}
           ItemSeparatorComponent={this._renderSeparator}
           data={this.state.imageResults}
           renderItem={this._renderItem}
-          contentContainerStyle={{display: 'flex', justifyContent: 'space-between', marginHorizontal:'1.667%', marginVertical: '4%', alignContent:'space-between'}}
+          contentContainerStyle={styles.imagesFlatList}
         />
         <ModalView
             modalVisible={ this.state.modalVisible }
             setModalVisible={ (vis) => { this._setModalVisible(false) }}
             image = {this.state.selectedImage}
-            style={{display:'flex',height:800, width:800, alignItems: 'center', justifyContent: 'center'}}
+            style={styles.modalView}
         />
       </View>
     );
@@ -65,5 +67,5 @@ const mapStateToProps = (state) => {
   return { images } = state.Images || [];
 };
 
-export default connect(mapStateToProps)(ImageList)
+export default connect(mapStateToProps, {fetchAllImages})(ImageList)
 

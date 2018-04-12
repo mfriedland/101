@@ -1,12 +1,9 @@
-import Expo, { Notifications } from 'expo';
 import React, { Component } from 'react';
-import { Alert } from 'react-native'
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import { StyleSheet, View, StatusBar, Button } from 'react-native';
-import { Spinner } from './components/Spinner'
+import { View } from 'react-native';
 import Routes from './screens/Routes';
-import {persistor, store} from './store'
+import { store } from './store'
+import styles from './stylesheets'
 console.disableYellowBox = true;
 
 export default class myapp extends Component {
@@ -16,22 +13,20 @@ export default class myapp extends Component {
     return (
       <Provider store={ store }>
         <View style={styles.container}>
-          <PersistGate persistor={persistor}>
             <Routes />
-          </PersistGate>
         </View>
       </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'green',
-    marginTop: 30,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: 'green',
+//     marginTop: 30,
+//   },
+// });
 
 
 
