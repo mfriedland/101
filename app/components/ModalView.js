@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getOrientation } from '../reducers'
 import ModalImage from './ModalImage'
 import styles from '../stylesheets'
+import PinchZoomView from 'react-native-pinch-zoom-view';
+import ImageZoom from 'react-native-image-pan-zoom';
 
 export class ModalView extends Component {
   constructor() {
@@ -41,11 +43,19 @@ export class ModalView extends Component {
       let height = this.state.dimensions.height
       let width = this.state.dimensions.width
     return (
+      <ImageZoom cropWidth={Dimensions.get('window').width}
+                       cropHeight={Dimensions.get('window').height}
+                       imageWidth={Dimensions.get('window').width}
+                       imageHeight={Dimensions.get('window').height}
+                       onLongPress={() => this.props.setModalVisible(false)}onSwipeDown={() => this.props.setModalVisible(false)}
+                       >
       <TouchableHighlight style={styles.modalImage} onPress={() => { this.props.setModalVisible(false) }} >
         <View>
           <ModalImage orientation={this.props.mode} height={height} width={width}/>
         </View>
       </TouchableHighlight>
+      </ImageZoom>
+
       )
     }
   }

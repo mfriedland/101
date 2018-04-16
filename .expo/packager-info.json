@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19003,
-  "packagerPid": 40059,
+  "packagerPid": 44004,
   "expoServerNgrokUrl": "https://dv-shv.mfriedland.101.exp.direct",
   "packagerNgrokUrl": "https://packager.dv-shv.mfriedland.101.exp.direct",
-  "ngrokPid": 40070
+  "ngrokPid": 44018
 }
