@@ -1,6 +1,6 @@
 import { StyleSheet, View, Animated, PanResponder, Dimensions, LayoutAnimation, UIManager} from 'react-native';
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
+let SCREEN_WIDTH = Dimensions.get('window').width;
+let SCREEN_HEIGHT = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
   container: {
@@ -83,12 +83,24 @@ export const styles = StyleSheet.create({
     flex: 1
   },
   modalView: {
-    // display:'flex',
-    // height:800,
-    // width:800,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  portraitModalContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    flex: 1,
+    // transform: [{ rotate: '270deg' }]
+  },
+  landscapeModalContainer: {
+    // justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    flex: 1,
+    // transform: [{ rotate: '270deg' }]
   },
   modalContainer: {
     display: 'flex',
@@ -96,22 +108,44 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)',
     flex: 1,
+    // transform: [{ rotate: '270deg' }],
+    width: SCREEN_WIDTH,
   },
   modalImageBackground: {
     flex:1,
-     alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    // transform: [{ rotate: '270deg' }],
+    width: SCREEN_WIDTH,
+  },
+  modalPortraitImageBackground: {
+    flex:1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
+  },
+  modalLandscapeImageBackground: {
+    flex:1,
+    justifyContent: 'center',
+    transform: [{ rotate: '270deg' }],
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
   },
   modalImage: {
-    // width: SCREEN_WIDTH,
-    // height: SCREEN_HEIGHT/2,
     flex: 1,
-    marginLeft: 10,
   },
-  modalTextContainer: {
+  modalPortraitTextContainer: {
     backgroundColor: 'rgba(0,0,0,1)',
-    width: SCREEN_WIDTH,
     paddingLeft: 20,
     paddingVertical: 8,
+    width: SCREEN_WIDTH,
+  },
+  modalLandscapeTextContainer: {
+    backgroundColor: 'rgba(0,0,0,1)',
+    paddingLeft: 20,
+    paddingVertical: 8,
+    marginBottom: 45,
+    justifyContent: 'flex-end'
   },
   modalText: {
     color: 'white',

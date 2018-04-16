@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList, Image, TouchableHighlight } from 'react-nat
 import { connect } from 'react-redux';
 import styles from '../stylesheets'
 import ModalView from './ModalView'
-import { fetchAllImages } from '../reducers'
+import { fetchAllImages, setOrientation } from '../reducers'
 
 let imageResults = []
 
@@ -25,6 +25,11 @@ export class ImageList extends Component {
     this.setState({imageResults})
   }
 
+  componentWillReceiveProps() {
+    imageResults = this.props.images
+    this.setState({imageResults})
+  }
+
   componentWillUnmount() {
     this.setState(this.state)
   }
@@ -41,7 +46,6 @@ export class ImageList extends Component {
   }
 
   render() {
-    console.log('images', this.props.images)
     return (
       <View style={styles.imagesListContainer}>
         <FlatList
@@ -52,12 +56,23 @@ export class ImageList extends Component {
           renderItem={this._renderItem}
           contentContainerStyle={styles.imagesFlatList}
         />
+        { this.props.mode === 'portrait' ?
         <ModalView
             modalVisible={ this.state.modalVisible }
             setModalVisible={ (vis) => { this._setModalVisible(false) }}
             image = {this.state.selectedImage}
-            style={styles.modalView}
+            style={styles.portraitModalContainer}
+            mode={this.props.mode}
         />
+        :
+        <ModalView
+            modalVisible={ this.state.modalVisible }
+            setModalVisible={ (vis) => { this._setModalVisible(false) }}
+            image = {this.state.selectedImage}
+            // style={styles.landscapeModalContainer}
+            mode={this.props.mode}
+        />
+        }
       </View>
     );
   }

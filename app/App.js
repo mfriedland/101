@@ -4,12 +4,10 @@ import { View } from 'react-native';
 import Routes from './screens/Routes';
 import { store } from './store'
 import styles from './stylesheets'
-console.disableYellowBox = true;
 
 export default class myapp extends Component {
 
   render() {
-
     return (
       <Provider store={ store }>
         <View style={styles.container}>
@@ -19,14 +17,5 @@ export default class myapp extends Component {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: 'green',
-//     marginTop: 30,
-//   },
-// });
-
 
 

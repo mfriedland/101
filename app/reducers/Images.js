@@ -17,6 +17,7 @@ const deleteSearch = () => ({
 });
 
 export const fetchImages = (searchText) => dispatch => {
+    // if (!searchText.split('').length) return;
     let search = searchText.replace(/\s/,'+')
     let imageResults = []
     fetch(`https://pixabay.com/api/?key=8649244-1d60bb9a8dd7e4f6ba9f1d298&q=${search}&image_type=photo`)

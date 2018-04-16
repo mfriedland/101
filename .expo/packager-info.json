@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19002,
-  "packagerPid": 20414,
-  "expoServerNgrokUrl": "https://63-gw7.mfriedland.101.exp.direct",
-  "packagerNgrokUrl": "https://packager.63-gw7.mfriedland.101.exp.direct",
-  "ngrokPid": 20437
+  "expoServerPort": 19004,
+  "packagerPort": 19005,
+  "packagerPid": 34593,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

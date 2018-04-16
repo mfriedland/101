@@ -6,7 +6,7 @@ import ImageList from '../components/ImageList'
 import Search from '../components/Search'
 import { fetchAllImages } from '../reducers'
 
-class HomePage extends Component {
+export class HomePage extends Component {
   static navigationOptions = {
     header: null,
   }
@@ -19,12 +19,16 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    // this.props.fetchAllImages();
     Dimensions.addEventListener("change", this.handler);
   }
 
   componentWillUnmount() {
     Dimensions.removeEventListener("change", this.handler);
+  }
+
+  componentWillReceiveProps() {
+    imageResults = this.props.images
+    this.setState({imageResults})
   }
 
   handler = dims => {
@@ -33,38 +37,36 @@ class HomePage extends Component {
       this.setState({dimensions: {height, width}});
   }
 
-  portraitView = () => {
+  portraitView = (mode) => {
     return(
       <View style={styles.container}>
         <View style={styles.searchPortraitView}>
           <Search />
         </View>
         <View style={styles.imagesListPortraitView}>
-          <ImageList />
+          <ImageList mode={mode}/>
         </View>
       </View>
     )
   }
 
-  landscapeView() {
+  landscapeView(mode) {
     return(
       <View style={styles.container}>
         <View style={styles.searchLandscapeView}>
           <Search />
         </View>
         <View style={styles.imagesListLandscapeView}>
-          <ImageList />
+          <ImageList mode={mode}/>
         </View>
       </View>
     )
   }
 
-
-
   render() {
     const {width, height} = this.state.dimensions;
     const mode = height > width ? "portrait" : "landscape";
-    let view = mode === 'portrait' ? this.portraitView() : this.landscapeView()
+    let view = mode === 'portrait' ? this.portraitView(mode) : this.landscapeView(mode)
     return (
       <View style={styles.container}>
         { view }
@@ -78,5 +80,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {fetchAllImages})(HomePage)
-
-export { HomePage }
