@@ -20,18 +20,8 @@ export class ImageList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllImages();
     imageResults = this.props.images
     this.setState({imageResults})
-  }
-
-  componentWillReceiveProps() {
-    imageResults = this.props.images
-    this.setState({imageResults})
-  }
-
-  componentWillUnmount() {
-    this.setState(this.state)
   }
 
   _renderItem = ({item}) => (
@@ -39,6 +29,7 @@ export class ImageList extends Component {
           <Image style={styles.image} source={{ uri: item.image }} />
         </TouchableHighlight>
   )
+
   _setModalVisible(visible, item) {
     if (item) {
       this.setState({ modalVisible: visible, selectedImage: item});
@@ -55,7 +46,7 @@ export class ImageList extends Component {
           keyExtractor= {(item, index) => index }
           numColumns={this.state.columns}
           ItemSeparatorComponent={this._renderSeparator}
-          data={this.state.imageResults}
+          data={this.props.images}
           renderItem={this._renderItem}
           contentContainerStyle={styles.imagesFlatList}
           onEndReached={this._handleLoadMore}
@@ -83,8 +74,8 @@ export class ImageList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { images } = state.Images || [];
+  return { images } = state.Images;
 };
 
-export default connect(mapStateToProps, {fetchAllImages})(ImageList)
+export default connect(mapStateToProps)(ImageList)
 

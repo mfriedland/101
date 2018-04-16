@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   },
   searchPortraitView: {
     flex: 1,
-    marginTop: 30,
   },
   searchLandscapeView: {
     flex:1,
@@ -40,7 +39,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'grey',
     height: 35,
-    backgroundColor: 'lightgrey',
+    backgroundColor: 'grey',
     alignItems: 'center',
     marginVertical: 10,
     justifyContent: 'center',
@@ -53,7 +52,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 3,
   },
   imagesListPortraitView: {
-    flex: 11
+    flex: 12
   },
   imagesListLandscapeView: {
     flex: 6

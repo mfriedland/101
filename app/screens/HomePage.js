@@ -25,12 +25,6 @@ export class HomePage extends Component {
   componentWillUnmount() {
     Dimensions.removeEventListener("change", this.handler);
   }
-
-  componentWillReceiveProps() {
-    imageResults = this.props.images
-    this.setState({imageResults})
-  }
-
   handler = dims => {
       let height = dims.window.height
       let width = dims.window.width
@@ -79,4 +73,5 @@ const mapStateToProps = (state) => {
   return { images } = state.Images;
 };
 
-export default connect(mapStateToProps, {fetchAllImages})(HomePage)
+export default connect(mapStateToProps )(HomePage)
+// export default HomePage

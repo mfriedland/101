@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, } from 'react-native';
-import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux';
-import { fetchImages, deleteImages } from '../reducers'
+import { fetchImages } from '../reducers'
 import styles from '../stylesheets'
 
 export class Search extends Component {
@@ -14,7 +13,7 @@ export class Search extends Component {
     }
   }
 
-  componentWillReceiveProps() {
+  componentDidMount() {
     imageResults = this.props.images
     this.setState({imageResults})
   }
@@ -24,7 +23,8 @@ export class Search extends Component {
   }
 
   onButtonPress() {
-    this.props.fetchImages(this.state.search);
+    this.props.getImages(this.state.search)
+    this.setState({found: true})
   }
 
   renderButton() {
@@ -56,4 +56,10 @@ const mapStateToProps = (state) => {
   return { images } = state.Images;
 };
 
-export default connect(mapStateToProps, {fetchImages, deleteImages})(Search)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getImages: (search) => dispatch(fetchImages(search)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)
