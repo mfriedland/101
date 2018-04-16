@@ -45,6 +45,9 @@ export class ImageList extends Component {
     } else  this.setState({ modalVisible: visible })
   }
 
+  _handleLoadMore = () => {
+  }
+
   render() {
     return (
       <View style={styles.imagesListContainer}>
@@ -55,6 +58,8 @@ export class ImageList extends Component {
           data={this.state.imageResults}
           renderItem={this._renderItem}
           contentContainerStyle={styles.imagesFlatList}
+          onEndReached={this._handleLoadMore}
+          onEndThreshold={0}
         />
         { this.props.mode === 'portrait' ?
         <ModalView

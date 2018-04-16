@@ -93,28 +93,20 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)',
     flex: 1,
-    // transform: [{ rotate: '270deg' }]
   },
   landscapeModalContainer: {
-    // justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)',
     flex: 1,
-    // transform: [{ rotate: '270deg' }]
   },
   modalContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,.5)',
     flex: 1,
-    // transform: [{ rotate: '270deg' }],
     width: SCREEN_WIDTH,
   },
   modalImageBackground: {
     flex:1,
     alignItems: 'flex-end',
-    // transform: [{ rotate: '270deg' }],
     width: SCREEN_WIDTH,
   },
   modalPortraitImageBackground: {
