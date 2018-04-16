@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'grey',
     height: 35,
-    backgroundColor: 'grey',
+    backgroundColor: 'lightgrey',
     alignItems: 'center',
     marginVertical: 10,
     justifyContent: 'center',

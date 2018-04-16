@@ -74,7 +74,6 @@ export class ImageList extends Component {
             modalVisible={ this.state.modalVisible }
             setModalVisible={ (vis) => { this._setModalVisible(false) }}
             image = {this.state.selectedImage}
-            // style={styles.landscapeModalContainer}
             mode={this.props.mode}
         />
         }
