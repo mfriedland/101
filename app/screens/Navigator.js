@@ -9,7 +9,7 @@ const Navigator =
       home: { screen: HomePage },
       detail: { screen: Detail, navigationOptions: ({ navigation }) => ({
         headerStyle: {
-          backgroundColor: '#12092f',
+          backgroundColor: 'lightgrey',
           tintColor:'white',
           }
         }),

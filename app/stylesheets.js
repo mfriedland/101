@@ -27,12 +27,12 @@ export const styles = StyleSheet.create({
     paddingBottom: 5,
     fontFamily: "WorkSans",
     fontSize: 18.7,
-    fontWeight: "normal",
+    fontWeight: "600",
     fontStyle: "normal",
     letterSpacing: 0,
     textAlign: "left",
     marginVertical: 20,
-    color: "#ffffff"
+    color: "white"
   },
   searchButton: {
     borderRadius: 15,

@@ -17,7 +17,6 @@ const deleteSearch = () => ({
 });
 
 export const fetchImages = (searchText) => dispatch => {
-    console.log('XXXXXXXXXXXXXXXX', searchText.length, searchText.split('').length)
     if (searchText.length && searchText.split('').length) {
         let search = searchText.replace(/\s/g,'+')
         let imageResults = []
@@ -30,8 +29,13 @@ export const fetchImages = (searchText) => dispatch => {
             }
         })
         .then( () => dispatch(getImages(imageResults)))
-        .catch(err => console.error('Could not fetch images :(', err));
-    } else dispatch(getAllImages());
+        .catch(err => {
+            // for production - comment out for development:
+            return;
+            // for development
+            console.error('Could not fetch images :(', err)
+        });
+    } else return;
 }
 
 export const deleteImages = (searchText) => dispatch => {

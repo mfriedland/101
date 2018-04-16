@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { connect } from 'react-redux';
 import Navigator from './Navigator'
 import styles from '../stylesheets'
-import { fetchAllImages } from '../reducers'
 
 const Routes = () =>  {
   return(
@@ -17,4 +16,4 @@ const mapStateToProps = (state) => {
   return { images } = state.Images || [];
 };
 
-export default connect(mapStateToProps, {fetchAllImages})(Routes)
+export default connect(mapStateToProps)(Routes)
